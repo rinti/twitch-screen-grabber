@@ -96,6 +96,13 @@ if __name__ == '__main__':
     vidcap = cv2.VideoCapture(f.name)
 
     success, image = vidcap.read()
+    h, w, _ = image.shape
+    crop_h = h / 4
+    crop_w = w / 2
+
+    # image[y1:y2, x1:x2]
+    image = image[h - crop_h:h, crop_w:w]
+    # cv2.imwrite('debug.png', image)
 
     f.close()
     os.unlink(f.name)
