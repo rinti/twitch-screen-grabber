@@ -1,0 +1,2 @@
+include README.md LICENCE
+recursive-include twitch_stream_grabber *.py *.png *.txt
