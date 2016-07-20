@@ -7,7 +7,7 @@ def get_most_likely_heroes(image):
         for hero
         in
         [
-            'genji', 'mccree', 'pharah', 'reaper', 'soldier76', 'tracer',
+            'genji', 'mccree', 'pharah', 'reaper', 'soldier76', 'tracer', 'ana',
             'bastion', 'bastion_turret', 'hanzo', 'junkrat', 'mei', 'torbjorn', 'widowmaker',
             'dva', 'reinhardt', 'roadhog', 'lucio', 'mercy', 'symmetra', 'zenyatta',
         ]
