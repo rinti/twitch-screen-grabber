@@ -1,35 +1,8 @@
 import unittest
-import mock
-import requests
-import requests_mock
 import cv2
 
-from run import get_auth_data, calculate_score, get_most_likely_heroes
 
-session = requests.Session()
-adapter = requests_mock.Adapter()
-session.mount('mock', adapter)
-
-auth_mock_json = dict(
-    token='asdf',
-    sig='qwer',
-)
-
-adapter.register_uri(
-    'GET', 'mock://api.twitch.tv/api/channels/test/access_token', json=auth_mock_json,
-)
-adapter.register_uri(
-    'GET', 'mock://usher.twitch.tv/api/channel/hls/test.m3u8', text='http://loremipsum',
-)
-
-
-class TestAPI(unittest.TestCase):
-    @mock.patch(
-        'run.requests.get',
-        lambda _: session.get('mock://api.twitch.tv/api/channels/test/access_token'))
-    def test_get_auth_data(self):
-        data = get_auth_data('test')
-        self.assertEqual(data, auth_mock_json)
+from twitch_screen_grabber.examples.overwatch import calculate_score, get_most_likely_heroes
 
 
 class TestImageRecognition(unittest.TestCase):

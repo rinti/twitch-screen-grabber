@@ -1,9 +1,15 @@
 import cv2
+import os
+
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__) + '/../..')
 
 
 def get_most_likely_heroes(image):
     heroes = [
-        {'hero': hero, 'score': calculate_score(cv2.imread('tests/images/{}_target.png'.format(hero)), image)}
+        {
+            'hero': hero,
+            'score': calculate_score(cv2.imread(PROJECT_PATH + '/tests/images/{}_target.png'.format(hero)), image)
+        }
         for hero
         in
         [
