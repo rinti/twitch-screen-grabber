@@ -23,7 +23,7 @@ class TwitchGrabber(object):
         data = requests.get(url).json()
         return data
 
-    def _get_livestream_url(self):
+    def _get_livestream_m3u8_content(self):
         url = 'http://usher.twitch.tv/api/channel/hls/{channel}.m3u8'.format(channel=self.channel)
         data = self._get_auth_data()
         token, sig = data['token'], data['sig']
@@ -37,11 +37,11 @@ class TwitchGrabber(object):
             type='any',
             p=random.randint(0, 99999)
         )
-
-        return requests.get(url, params=params).text
+        content = requests.get(url, params=params).text
+        return content
 
     def get_highest_quality_stream(self):
-        return m3u8.loads(self._get_livestream_url()).playlists[0].uri
+        return m3u8.loads(self._get_livestream_m3u8_content()).playlists[0].uri
 
     def get_latest_segment_file_url(self):
         stream = m3u8.load(self.get_highest_quality_stream())
