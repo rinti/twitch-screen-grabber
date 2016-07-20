@@ -8,8 +8,8 @@ Find a streamer that is playing overwatch and type:
 `python run.py some_streamer overwatch`
 
 # Todo:
-  * fix the broken tests
   * make another example
 
 # Run tests
 `python -m tests.test`
+`python -m tests.test_examples`
