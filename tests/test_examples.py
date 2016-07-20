@@ -13,8 +13,10 @@ class TestImageRecognition(unittest.TestCase):
         self.big_image_mccree = cv2.imread('tests/images/mccree_scan.png', 0)
 
     def test_score(self):
+        # Make sure it find matches
         self.assertGreater(calculate_score(self.small_image, self.big_image), 15)
         self.assertGreater(calculate_score(self.small_image, self.big_image_dark), 15)
+        # Make sure it doesn't give bad matches a good score
         self.assertLess(calculate_score(self.small_image, self.big_image_mccree), 5)
 
     def test_most_likely_heroes(self):
